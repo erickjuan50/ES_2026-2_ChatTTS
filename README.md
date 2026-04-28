@@ -50,6 +50,28 @@ Para que qualquer interessado possa chegar às mesmas conclusões ou auditar o p
 * O que fazer: Procure por arquivos como CONTRIBUTING.md ou evidências de ferramentas como SonarQube ou CodeQL.
 * Conclusão: A ausência de um guia de contribuição oficial e de gates de qualidade automatizados de análise estática fundamenta o achado de que a qualidade é mantida de forma operacional e comunitária, sem formalismos processuais robustos.
 
+* # Tutorial Técnico: Replicação com Google Colab e Hugging Face
+
+Para reproduzir as análises de maturidade e chegar a resultados semelhantes de forma assistida por IA, siga este guia técnico.
+
+### Ferramentas e Modelo Recomendado
+Para esta análise, recomenda-se o uso do modelo **Meta-Llama-3-8B-Instruct** (ou versões superiores), disponível no **Hugging Face**. Este modelo possui alta capacidade de compreensão de normas técnicas e arquitetura de software.
+
+* Plataforma: Google Colab (Ambiente de notebooks em nuvem).
+* Bibliotecas: transformers e bitsandbytes (para rodar o modelo de forma eficiente).
+
+### Requerimentos de Hardware para Máquina Local
+Caso opte por rodar o modelo localmente em vez de usar o Google Colab:
+* GPU: NVIDIA com mínimo de 8 GB de VRAM (ex: RTX 3060 ou superior) para rodar o modelo em modo quantizado (4-bit).
+* RAM: Mínimo de 16 GB.
+* Espaço em Disco: 15 GB livres.
+* Sistema Operacional: Linux ou Windows com WSL2.
+
+### Exemplo de Prompt para Auditoria
+O prompt abaixo deve ser utilizado para instruir a IA a realizar a análise baseada no contexto do repositório:
+
+"Aja como um auditor de qualidade de software especializado em CMMI e MPS.BR. Analise o seguinte conteúdo extraído do projeto ChatTTS [inserir conteúdo aqui]. Com base nos eixos de Gestão de Requisitos, Arquitetura e Verificação/Validação, identifique: 1. Pontos de aderência técnica; 2. Lacunas de formalização de processo; 3. Sugestões de melhoria para atingir um nível de maturidade superior. Apresente o resultado de forma técnica e objetiva."
+
 ---
 
 ## Plano de Melhoria Sugerido
