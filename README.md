@@ -1,56 +1,56 @@
 # Auditoria de Maturidade ChatTTS - Engenharia de Software (COMP0503)
 
-[cite_start]Este repositório contém os resultados de uma auditoria de maturidade realizada no ecossistema **ChatTTS**[cite: 3]. [cite_start]A análise segue os princípios dos modelos **CMMI** e **MPS.BR** para avaliar como um projeto de código aberto de LLM (Large Language Model) lida com processos de engenharia de software[cite: 2, 15].
+Este repositório apresenta os resultados da Atividade Avaliativa 1 (A1), focada na Auditoria de Maturidade em Ecossistemas LLM do projeto ChatTTS. A análise foi estruturada seguindo critérios de modelos como CMMI e MPS.BR.
 
-## 👥 Equipe de Auditoria
-* [cite_start]**Erick Juan Gois Oliveira**: Análise do Eixo IV - Verificação [cite: 6]
-* [cite_start]**Wanessa Silva Santos**: Análise do Eixo V - Qualidade de Software [cite: 6]
-* [cite_start]**Carlos Henrico Fontes Cabral**: Análise do Eixo I - Gestão de Projeto [cite: 6]
-* [cite_start]**Luiz Felipe da Conceição Souza**: Análise do Eixo III - Arquitetura e Modelagem [cite: 6]
-* [cite_start]**João Pedro Brandão Almeida**: Análise do Eixo II - Gestão de Requisitos [cite: 6]
-* [cite_start]**Lucas da Silva Batista**: Conclusão e Plano de Melhoria [cite: 6]
-
----
-
-## 📊 Resumo da Auditoria por Eixo
-
-### Eixo I: Ciclo de Vida e Metodologias Ágeis
-* [cite_start]**Status**: Aderência Parcial[cite: 22].
-* [cite_start]**Achados**: O projeto opera com um ciclo de vida predominantemente adaptativo e possui um roadmap público[cite: 12]. [cite_start]No entanto, há pouca evidência de planejamento formal por marcos (milestones) ou uso de ferramentas como GitHub Projects[cite: 12].
-
-### Eixo II: Engenharia de Requisitos
-* [cite_start]**Status**: Aderência Parcial[cite: 39].
-* [cite_start]**Achados**: Os requisitos são tratados de forma incremental via Issues e Pull Requests[cite: 29]. [cite_start]Embora a rastreabilidade técnica seja boa (ex: suporte a NPU), não apresenta um processo formal de baseline ou padrão de especificação[cite: 32, 37].
-
-### Eixo III: Arquitetura e Modelagem
-* [cite_start]**Status**: Boa Aderência Técnica[cite: 56].
-* [cite_start]**Achados**: Arquitetura modular e centrada na classe `Chat`, que funciona como uma **Fachada (Facade)**[cite: 46, 48]. [cite_start]Existe um bom isolamento entre a interface externa (FastAPI) e o núcleo de inferência[cite: 50, 54].
-
-### Eixo IV: Verificação e Validação (V&V)
-* [cite_start]**Status**: Boa (Verificação) / Parcial (Validação)[cite: 73].
-* [cite_start]**Achados**: Forte em fluxos de CI para verificação técnica (formatação, testes unitários)[cite: 65, 66]. [cite_start]Contudo, carece de métricas automáticas para validar a qualidade da saída da IA, como a inteligibilidade do áudio gerado[cite: 64, 68].
-
-### Eixo V: Qualidade de Software
-* [cite_start]**Status**: Aderência Parcial[cite: 90].
-* [cite_start]**Achados**: Apresenta automação de estilo e testes, mas a governança de qualidade é mais operacional do que formalizada[cite: 80, 101]. [cite_start]Ausência de um arquivo `CONTRIBUTING.md` e de ferramentas de análise estática avançada como CodeQL ou SonarQube[cite: 84, 97, 98].
+## Equipe e Contribuições Individuais
+* Erick Juan Gois Oliveira: Análise do Eixo IV - Verificação e Validação.
+* Wanessa Silva Santos: Análise do Eixo V - Qualidade de Software.
+* Carlos Henrico Fontes Cabral: Análise do Eixo I - Gestão de Projeto.
+* Luiz Felipe da Conceição Souza: Análise do Eixo III - Arquitetura e Modelagem.
+* João Pedro Brandão Almeida: Análise do Eixo II - Engenharia de Requisitos.
+* Lucas da Silva Batista: Conclusão e Plano de Melhoria.
 
 ---
 
-## 🚀 Plano de Melhoria Sugerido
+## Resumo dos Achados de Auditoria
 
-[cite_start]Com base no diagnóstico, recomendam-se duas ações prioritárias para elevar a maturidade do projeto[cite: 106, 109]:
+O ChatTTS demonstra uma qualidade operacional elevada, mas com lacunas significativas em formalização de processos.
 
-1.  [cite_start]**Institucionalizar a Gestão**: Criar um arquivo `CONTRIBUTING.md`, padronizar templates de Issues/PRs e utilizar Milestones para tornar o roadmap rastreável[cite: 111, 114].
-2.  [cite_start]**Pipeline de Validação e Assurance**: Expandir o CI para incluir métricas de qualidade de áudio e integrar ferramentas de análise estática de código[cite: 118, 120, 121].
+| Eixo de Auditoria | Julgamento de Maturidade | Principais Observações |
+| :--- | :--- | :--- |
+| I - Gestão (GPR) | Aderência Parcial | Ciclo adaptativo com roadmap, mas sem planejamento por milestones. |
+| II - Requisitos (GRE) | Aderência Parcial | Rastreabilidade via Issues/PRs, mas sem processo formal de baseline. |
+| III - Arquitetura (PJR) | Boa Aderência | Arquitetura modular (Facade) com bom isolamento de componentes. |
+| IV - Verificação (V&V) | Boa (VER) / Parcial (VAL) | CI forte para código, mas fraco em validar a qualidade do áudio gerado. |
+| V - Qualidade (GQA) | Aderência Parcial | Automação de estilo presente, mas sem análise estática avançada. |
 
 ---
 
-## 🔍 Como verificar estas informações (Tutorial)
+## Tutorial de Pesquisa: Como Validar esta Auditoria
 
-Caso deseje pesquisar estas informações diretamente no repositório do ChatTTS, siga este guia:
+Para que qualquer interessado possa chegar às mesmas conclusões ou auditar o projeto de forma independente, os passos abaixo detalham como navegar no repositório oficial do ChatTTS no GitHub.
 
-1.  [cite_start]**Verificar Gestão (GPR)**: Acesse a aba **Releases** e o roadmap no `README.md`[cite: 14]. [cite_start]Observe a ausência de uso das abas **Projects** ou **Milestones** do GitHub para confirmar a baixa formalização gerencial[cite: 12].
-2.  [cite_start]**Rastrear Requisitos (GRE)**: Vá em **Pull Requests** e procure por vínculos com **Issues**[cite: 32]. [cite_start]Exemplos como o suporte a "Ascend NPU" mostram como uma demanda se materializa no código[cite: 34, 35].
-3.  [cite_start]**Analisar Arquitetura (PJR)**: Explore o código-fonte e localize a classe `Chat`[cite: 46]. [cite_start]Veja como ela orquestra componentes como `Normalizer`, `Tokenizer` e seletores de dispositivo[cite: 53].
-4.  [cite_start]**Auditar CI/CD (V&V)**: Navegue até a pasta `.github/workflows/`[cite: 66]. [cite_start]Abra arquivos como `unitest.yml` para ver quais testes e versões de Python são verificados automaticamente[cite: 66].
-5.  [cite_start]**Avaliar Governança de Qualidade (GQA)**: Verifique as labels nas **Issues** (ex: `bug`, `enhancement`, `performance`)[cite: 87]. [cite_start]Isso demonstra como a dívida técnica é visível, apesar da falta de indicadores formais[cite: 86, 94].
+### 1. Como auditar Gestão e Requisitos (Eixos I e II)
+* Onde pesquisar: Abas de Issues e Pull Requests.
+* O que fazer: Procure por solicitações de novas funcionalidades ou correções de bugs. 
+* Conclusão: Verifique se as alterações no código (PRs) estão vinculadas a uma demanda específica (Issue). Note a ausência de Milestones ou abas de Projects configuradas, o que evidencia que o planejamento é orientado por necessidades técnicas imediatas da comunidade e não por um cronograma formal.
+
+### 2. Como auditar a Arquitetura (Eixo III)
+* Onde pesquisar: Estrutura de pastas do código-fonte.
+* O que fazer: Localize a classe central Chat.
+* Conclusão: Analise como essa classe funciona como uma fachada (Facade) para orquestrar módulos como Normalizer, Tokenizer e os modelos GPT/DVAE. Se os componentes são carregados de forma independente e modular, a boa aderência à modelagem técnica é confirmada.
+
+### 3. Como auditar Verificação e Validação (Eixo IV)
+* Onde pesquisar: Pasta .github/workflows/.
+* O que fazer: Inspecione arquivos YAML como unitest.yml e push-format.yml.
+* Conclusão: Estes arquivos mostram a execução automatizada de testes e formatação de código (Verificação). No entanto, ao observar a ausência de testes de regressão que avaliem a inteligibilidade ou naturalidade do áudio, confirma-se a lacuna na Validação da saída da IA.
+
+### 4. Como auditar a Garantia da Qualidade (Eixo V)
+* Onde pesquisar: Raiz do repositório.
+* O que fazer: Procure por arquivos como CONTRIBUTING.md ou evidências de ferramentas como SonarQube ou CodeQL.
+* Conclusão: A ausência de um guia de contribuição oficial e de gates de qualidade automatizados de análise estática fundamenta o achado de que a qualidade é mantida de forma operacional e comunitária, sem formalismos processuais robustos.
+
+---
+
+## Plano de Melhoria Sugerido
+As ações prioritárias para elevar a maturidade do projeto incluem a institucionalização da gestão (uso de Milestones e Templates) e a implementação de um pipeline de validação objetiva para a saída de áudio gerada pelo modelo.
